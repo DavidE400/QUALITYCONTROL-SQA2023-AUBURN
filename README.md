@@ -5,6 +5,9 @@ Team Name: Quality Control
 
 Team Members:
 Noah Greer
+
 David Estrada 
+
 Will Mccrite
+
 Ziyi Lu
