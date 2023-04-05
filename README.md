@@ -4,7 +4,7 @@ The objective of this project is to integrate software quality assurance activit
 Team Name - Quality Control
 
 Team Members -
-Noah Greer
-David Estrada 
-Will Mccrite
+Noah Greer,
+David Estrada, 
+Will Mccrite,
 Ziyi Lu
