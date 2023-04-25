@@ -9,4 +9,4 @@ David Estrada,
 Will Mccrite,
 Ziyi Lu
 
-KubeSec repository: https://github.com/paser-group/KubeSec
+KubeSec repository -- https://github.com/paser-group/KubeSec
