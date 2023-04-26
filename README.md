@@ -14,3 +14,7 @@ KubeSec repository -- https://github.com/paser-group/KubeSec
 Activity overview:
 
 4.a. - A pre-commit example file is present in the directory. Copy it into .git/hooks and modify + commit a file to see csv file vulnerabilities.csv output which is also included in the present directory. 
+
+4.b. -
+
+4.c. -
