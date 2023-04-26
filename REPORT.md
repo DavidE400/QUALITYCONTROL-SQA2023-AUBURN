@@ -1,6 +1,7 @@
 QUALITYCONTROL PROJECT REPORT
 
 David Estrada, Ziyi Lu, Noah Greer, Will Mccrite
+
 April 24, 2023
 
 1. Activity 4.a. - A pre-hook was created to run bandit on all python files in the repository in an effort to detect vulnerabilities. 
