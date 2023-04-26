@@ -1,0 +1,11 @@
+name: Fuzzing Workflow
+on: [push]
+
+jobs:
+  fuzz:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run fuzzing script
+        run: python fuzz.py
