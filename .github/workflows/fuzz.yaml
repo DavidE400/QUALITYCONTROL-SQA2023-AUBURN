@@ -1,0 +1,13 @@
+name: Fuzzing Workflow
+on: [push]
+
+jobs:
+  fuzz:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run fuzzing script
+        run: python KubeSec-master/fuzz.py
