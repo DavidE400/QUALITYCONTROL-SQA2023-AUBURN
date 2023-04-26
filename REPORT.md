@@ -1,4 +1,4 @@
-QUALITYCONTROL Project Report
+QUALITYCONTROL PROJECT REPORT
 
 David Estrada, Ziyi Lu, Noah Greer, Will Mccrite
 April 24, 2023
