@@ -8,4 +8,4 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Run fuzzing script
-        run: python fuzz.py
+        run: python KubeSec-master/fuzz.py
