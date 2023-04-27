@@ -14,4 +14,4 @@ B105 seems to be the only and most prevalent security weakness found in the repo
 
 3. Activity 4.c. - Logging was integrated into several methods within parser.py, graphtaint.py, and main.py. The time, date, and result of the methods' execution are formatted and logged into a separate file called "KubeSec-LOGGER.log". Logging can be useful for digital investigations because it leaves a trace of exactly what happened and at what time. This activity showed how simple, yet effective logging can be.
 
-4. Discussion - 
+4. Lessons Learned - 
