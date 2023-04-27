@@ -15,4 +15,4 @@ Activity Overview:
 
 4.b. - Auto Github Actions is done. `fuzz.py` will autorun when push.
 
-4.c. -
+4.c. - Forensics implementation via logging is complete. KubeSec-LOGGING.log file is present in the directory. Upon execution of 'main.py', logging for functions in 'main.py', 'graphtaint.py', and 'parser.py' occurs, providing timestamp information and method execution/description information.
