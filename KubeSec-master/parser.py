@@ -5,12 +5,15 @@ Parser to file YAML files
 '''
 
 import yaml
-import constants 
+import constants
+import logging_example 
 
 def checkIfWeirdYAML(yaml_script):
     '''
     to filter invalid YAMLs such as ./github/workflows/ 
     '''
+    logObj = logging_example.giveMeLoggingObject()
+    logObj.info('Checking for weird YAMLs')
     val = False
     if ( any(x_ in yaml_script for x_ in constants.WEIRD_PATHS  ) ):
         val = True 
@@ -24,6 +27,8 @@ def keyMiner(dic_, value):
   i.e. the whole hierarchy
   Returns None if no value is found  
   '''
+  logObj = logging_example.giveMeLoggingObject()
+  logObj.info('Mining keys')
   if dic_ == value:
     return [dic_]
   elif isinstance(dic_, dict):
@@ -44,6 +49,8 @@ def getKeyRecursively(  dict_, list2hold,  depth_ = 0  ) :
     '''
     gives you ALL keys in a regular/nested dictionary 
     '''
+    logObj = logging_example.giveMeLoggingObject()
+    logObj.info('Getting all keys in dictionary')
     if  isinstance(dict_, dict) :
         # for key_, val_ in sorted(dict_.items(), key=lambda x: x[0]):    
         for key_, val_ in sorted(dict_.items(), key = lambda x: x[0] if ( isinstance(x[0], str) ) else str(x[0])  ):    
@@ -64,6 +71,8 @@ def getValuesRecursively(  dict_   ) :
     '''
     gives you ALL values in a regular/nested dictionary 
     '''
+    logObj = logging_example.giveMeLoggingObject()
+    logObj.info('Getting all values in dictionary')
     if  isinstance(dict_, dict) :
         for val_ in dict_.values():
             yield from getValuesRecursively(val_) 
@@ -75,6 +84,8 @@ def getValuesRecursively(  dict_   ) :
 
 
 def checkIfValidK8SYaml(path2yaml):
+    logObj = logging_example.giveMeLoggingObject()
+    logObj.info('Checking for valid K8S YAML')
     val2ret   = False 
     dict_as_list = loadMultiYAML( path2yaml )
     yaml_dict    = getSingleDict4MultiDocs( dict_as_list )        
@@ -97,7 +108,9 @@ def getValsFromKey(dict_, target, list_holder  ):
     '''
     If you give a key, then this function gets the corresponding values 
     Multiple values are returned if there are keys with the same name  
-    '''    
+    '''
+    logObj = logging_example.giveMeLoggingObject()
+    logObj.info('Getting values from given key')    
     if ( isinstance( dict_, dict ) ):
         for key, value in dict_.items():
             # print( key, len(key) , target, len( target ), value  )
@@ -111,6 +124,8 @@ def getValsFromKey(dict_, target, list_holder  ):
                         getValsFromKey(ls, target, list_holder)
 
 def checkIfValidHelm(path_script):
+    logObj = logging_example.giveMeLoggingObject()
+    logObj.info('Checking for valid helm')
     val_ret = False 
     if ( (constants.HELM_KW in path_script) or (constants.CHART_KW in path_script) or (constants.SERVICE_KW in path_script) or (constants.INGRESS_KW in path_script)  or(constants.HELM_DEPLOY_KW in path_script) or (constants.CONFIG_KW in path_script) )  and (constants.VALUE_KW in path_script) :
         val_ret = True 
@@ -118,12 +133,16 @@ def checkIfValidHelm(path_script):
 
 
 def readYAMLAsStr( path_script ):
+    logObj = logging_example.giveMeLoggingObject()
+    logObj.info('Reading YAML as string')
     yaml_as_str = constants.YAML_SKIPPING_TEXT
     with open( path_script , constants.FILE_READ_FLAG) as file_:
         yaml_as_str = file_.read()
     return yaml_as_str
 
 def loadMultiYAML( script_ ):
+    logObj = logging_example.giveMeLoggingObject()
+    logObj.info('Loading multiple YAMLs')
     dicts2ret = []
     with open(script_, constants.FILE_READ_FLAG  ) as yml_content :
         try:
@@ -139,6 +158,8 @@ def loadMultiYAML( script_ ):
 
 
 def getSingleDict4MultiDocs( lis_dic ):
+    logObj = logging_example.giveMeLoggingObject()
+    logObj.info('Getting single dictionary for multiple docs')
     dict2ret = {} 
     key_lis  = []
     counter  = 0 
@@ -173,6 +194,8 @@ def getSingleDict4MultiDocs( lis_dic ):
 
 
 if __name__=='__main__':
+    logObj = logging_example.giveMeLoggingObject()
+    logObj.info('Executing parser.py')
     yaml_path = 'TEST_ARTIFACTS/docker.sock.yaml'
     dic_lis   = loadMultiYAML(yaml_path)
     # multi_yaml= 'TEST_ARTIFACTS/multi.doc.yaml' ## 2 dicts 

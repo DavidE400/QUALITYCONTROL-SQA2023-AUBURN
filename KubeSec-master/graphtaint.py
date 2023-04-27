@@ -6,9 +6,12 @@ Construct taint graphs based on weakness types
 import constants
 import parser 
 import os 
+import logging_example
 from itertools import combinations
 
 def getYAMLFiles(path_to_dir):
+    logObj = logging_example.giveMeLoggingObject()
+    logObj.info('Getting YAML files')
     valid_  = [] 
     for root_, dirs, files_ in os.walk( path_to_dir ):
        for file_ in files_:
@@ -19,6 +22,8 @@ def getYAMLFiles(path_to_dir):
     return valid_ 
 
 def constructHelmString(hiera_tuple): 
+    logObj = logging_example.giveMeLoggingObject()
+    logObj.info('Constructing Helm string')
     str2ret  = constants.YAML_SKIPPING_TEXT 
     upper_key, key, _ = hiera_tuple 
     if ( upper_key != key  ):
@@ -26,6 +31,8 @@ def constructHelmString(hiera_tuple):
     return str2ret 
 
 def getHelmTemplateContent( templ_dir ):
+    logObj = logging_example.giveMeLoggingObject()
+    logObj.info('Getting helm template content')
     template_content_dict = {}
     template_yaml_files =  getYAMLFiles( templ_dir )
     for template_yaml_file in template_yaml_files:
@@ -35,6 +42,8 @@ def getHelmTemplateContent( templ_dir ):
 
 
 def getMatchingTemplates(path2script, hierarchy_ls):
+    logObj = logging_example.giveMeLoggingObject()
+    logObj.info('Getting matching templates')
     templ_list = [] 
     template_content_dict, helm_string_list = {}, []
     templateDirOfHelmValues = os.path.dirname( path2script )  + constants.TEMPLATES_DIR_KW 
@@ -51,7 +60,9 @@ def getMatchingTemplates(path2script, hierarchy_ls):
                         templ_list.append( (template_file, helm_string ) )
     return templ_list
 
-def getValidTaints(  lis_template_matches ): 
+def getValidTaints(  lis_template_matches ):
+    logObj = logging_example.giveMeLoggingObject()
+    logObj.info('Getting valid taints')
     '''
     provides a mapping between the key where the secret occurred and the 
     files that re affected by teh key 
@@ -71,7 +82,8 @@ def mineSecretGraph( path2script, yaml_dict , secret_dict ):
     Works only for secrets. 
     Need to provide script path, script dict, dictionary of secrets that appear for the script  
     '''
-
+    logObj = logging_example.giveMeLoggingObject()
+    logObj.info('Mining secret graph')
     within_match_head = None 
     hierarchy_list = []
     for k_, v_ in secret_dict.items():
@@ -106,6 +118,8 @@ def mineSecretGraph( path2script, yaml_dict , secret_dict ):
 
 
 def getSHFiles(path_to_dir):
+    logObj = logging_example.giveMeLoggingObject()
+    logObj.info('Getting SH Files')
     valid_  = [] 
     for root_, _, files_ in os.walk( path_to_dir ):
        for file_ in files_:
@@ -117,12 +131,16 @@ def getSHFiles(path_to_dir):
 
 
 def readBashAsStr( path_sh_script ):
+    logObj = logging_example.giveMeLoggingObject()
+    logObj.info('Reading Bash as String')
     _as_str = constants.YAML_SKIPPING_TEXT
     with open( path_sh_script , constants.FILE_READ_FLAG) as file_:
         _as_str = file_.read()
     return _as_str
 
 def getTaintsFromConfigMaps( script_path ):
+    logObj = logging_example.giveMeLoggingObject()
+    logObj.info('Getting taints from config maps')
     list2Return = [] 
     config_map_dir  = os.path.dirname( script_path )  + constants.SLASH_SYMBOL    
     script_name     = script_path.replace( config_map_dir, constants.YAML_SKIPPING_TEXT )
@@ -143,6 +161,8 @@ def mineViolationGraph(path2script, yaml_dict, taint_value, k_ ):
     Works for all types. 
     Need to provide script path, script dict, value identified as smell, key for which value occurs 
     '''
+    logObj = logging_example.giveMeLoggingObject()
+    logObj.info('Mining violation graph')
     hierarchy_list = [] 
     hierarchy_keys = parser.keyMiner(yaml_dict, taint_value)
     hierarchy_keys = [x_ for x_ in hierarchy_keys if x_ != constants.YAML_SKIPPING_TEXT ] 
@@ -168,6 +188,8 @@ def mineServiceGraph( script_path, dict_yaml, src_val ):
     Works for all types. 
     Need to provide script path, script dict, value identified as smell 
     '''
+    logObj = logging_example.giveMeLoggingObject()
+    logObj.info('Mining service graph')
     ret_lis = [] 
     svc_dir     = os.path.dirname( script_path )  + constants.SLASH_SYMBOL    
     yaml_files  = getYAMLFiles( svc_dir )    
@@ -190,6 +212,8 @@ def mineNetPolGraph( script_, dict_y, src_val, src_keys ):
     Works for all types 
     Need to provide script path, script dict, idnetified values, and all keys of source 
     '''
+    logObj = logging_example.giveMeLoggingObject()
+    logObj.info('Mining network policy graph')
     lis2ret     = [] 
     net_pol_dir = os.path.dirname( script_ )  + constants.SLASH_SYMBOL    
     yaml_files  = getYAMLFiles( net_pol_dir )    

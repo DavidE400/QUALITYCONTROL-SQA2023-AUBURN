@@ -6,6 +6,7 @@ Source Code to Run Tool on All Kubernetes Manifests
 import scanner 
 import pandas as pd 
 import constants
+import logging_example
 
 def getCountFromAnalysis(ls_):
     list2ret           = []
@@ -64,14 +65,17 @@ if __name__ == '__main__':
     # ORG_DIR         = '/Users/arahman/K8S_REPOS/TEST_REPOS/'
     # OUTPUT_FILE_CSV = '/Users/arahman/Documents/OneDriveWingUp/OneDrive-TennesseeTechUniversity/Research/Kubernetes/StaticTaint/data/V16_TEST_OUTPUT.csv'
 
+    logObj = logging_example.giveMeLoggingObject()
+    logObj.info('Executing main.py')
+
     ORG_DIR         = './TEST_ARTIFACTS/'
     OUTPUT_FILE_CSV = './test.csv'
-    
+    logObj.info('')
+
     content_as_ls   = scanner.runScanner( ORG_DIR )
     df_all          = pd.DataFrame( getCountFromAnalysis( content_as_ls ) )
 
     df_all.to_csv( OUTPUT_FILE_CSV, header= constants.CSV_HEADER , index=False, encoding= constants.CSV_ENCODING ) 
-
 
 
 
