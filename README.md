@@ -12,8 +12,8 @@ Team Members:
 
 Activity Overview:
 
-4.a. - A pre-commit example file is present in the directory. Copy it into .git/hooks and modify + commit a file to see csv file vulnerabilities.csv output which is also included in the present directory. 
+* 4.a. - A pre-commit example file is present in the directory. Copy it into .git/hooks and modify + commit a file to see csv file vulnerabilities.csv output which is also included in the present directory. 
 
-4.b. - Auto Github Actions is done. `fuzz.py` will autorun when push.
+* 4.b. - Auto Github Actions is done. `fuzz.py` will autorun when push.
 
-4.c. - Forensics implementation via logging is complete. `KubeSec-LOGGER.log` is present in the directory. Upon execution of `main.py`, logging for functions in `main.py`, `graphtaint.py`, and `parser.py` occurs, providing timestamp information and method execution/description information through a logging object created from `logging_example.py`.
+* 4.c. - Forensics implementation via logging is complete. `KubeSec-LOGGER.log` is present in the directory. Upon execution of `main.py`, logging for functions in `main.py`, `graphtaint.py`, and `parser.py` occurs, providing timestamp information and method execution/description information through a logging object created from `logging_example.py`.
