@@ -12,6 +12,6 @@ B105 seems to be the only and most prevalent security weakness found in the repo
 
 2. Activity 4.b. - Auto Github Actions is done. fuzz.py will autorun when push. fuzz.py method is found within the root KubeSec-master.
 
-3. Activity 4.c. - 
+3. Activity 4.c. - Logging was integrated into several methods within parser.py, graphtaint.py, and main.py. The time, date, and result of the methods' execution are formatted and logged into a separate file called "KubeSec-LOGGER.log". Logging can be useful for digital investigations because it forces the code to leave a trace of exactly what happened and at what time. This activity showed how simple, yet effective logging can be.
 
 4. Discussion - 
