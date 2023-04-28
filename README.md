@@ -12,7 +12,7 @@
 
 #### Activity Overview: ####
 
-* 4.a. - A pre-commit example file is present in the directory. Copy it into .git/hooks and modify + commit a file to see csv file 'vulnerabilities.csv' output which is also included in the present directory. 
+* 4.a. - A pre-commit example file is present in the directory. Copy it into .git/hooks and modify + commit a file to see csv file `vulnerabilities.csv` output which is also included in the present directory. 
 
 * 4.b. - Auto Github Actions is done. `fuzz.py` will autorun when push.
 
